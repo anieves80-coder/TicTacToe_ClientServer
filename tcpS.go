@@ -86,7 +86,7 @@ func setPlay(c net.Conn, data string) string {
 	return setTable()
 }
 
-//Loops through the available positions to see is if there is any
+//Loops through the available positions to see if there is any
 //wining moves. If so then wins the game.
 func chkWinMove() bool {
 	for i, v := range pos {
