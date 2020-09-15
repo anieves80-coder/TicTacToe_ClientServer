@@ -6,7 +6,8 @@ import (
 	"net"
 	"strconv"
 	"strings"	
-    "math/rand"
+	"math/rand"
+	"time"
 )
 
 var pos = []string{" ", " ", " ", " ", " ", " ", " ", " ", " "}
@@ -86,7 +87,7 @@ func setPlay(c net.Conn, data string) string {
 	return setTable()
 }
 
-//Loops through the available positions to see if there is any
+//Loops through the available positions to see is if there is any
 //wining moves. If so then wins the game.
 func chkWinMove() bool {
 	for i, v := range pos {
@@ -122,6 +123,7 @@ func chkLoseMove() bool{
 //Chooses a random available position.
 func randomMove() {
 	for {
+		rand.Seed(time.Now().UTC().UnixNano())
 		v := rand.Intn(9 - 1) + 1
 		if pos[v-1] == " " {
 			pos[v-1] = "o"
