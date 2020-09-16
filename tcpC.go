@@ -49,11 +49,25 @@ func connect(name string, addr string, port string) {
 			fmt.Println("Try again!\n")
 			continue
 		}		
-		if len(message) > 3 && message[:3] == "WIN" {	
-			clearTerminal()	
-			fmt.Print(message[5:])			
+		if len(message) > 3 && message[:4] == "WIN1" {	
+			clearTerminal()
+			fmt.Println(message[6:14]+"/n")			
+			fmt.Print(formatTable(message[14:])+"\n")			
 			break
 		}
+		if len(message) > 3 && message[:4] == "WIN2" {	
+			clearTerminal()			
+			fmt.Println(message[6:29]+"\n")		
+			fmt.Print(formatTable(message[29:])+"\n")			
+			break
+		}
+		if len(message) > 3 && message[:4] == "WIN3" {
+			clearTerminal()				
+			fmt.Println(message[6:15]+"\n")			
+			fmt.Print(formatTable(message[15:])+"\n")			
+			break
+		}
+		clearTerminal()	
 		fmt.Print(formatTable(message))
 		fmt.Println("")
 		msg = "What position do you want to play?\n"
@@ -70,7 +84,6 @@ func clearTerminal() {
 //Formats the table so it can look like a 
 //tic_tac_toe table.
 func formatTable(tbl string) string {
-	clearTerminal()
 	tbl = tbl[:12] + "\n" + tbl[12:]
 	tbl = tbl[:26] + "\n" + tbl[26:]
 	tbl = tbl[:39] + "\n" + tbl[39:]

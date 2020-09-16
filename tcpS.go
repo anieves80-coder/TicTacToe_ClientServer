@@ -73,12 +73,12 @@ func setPlay(c net.Conn, data string) string {
 	plays++
 	played = append(played, conv)	
 	if verifyWin() == "player" {
-		return "WIN: YOU WIN!\n"
+		return "WIN1: YOU WIN!"+setTable()+"\n"
 	} else if verifyWin() == "tied" {
-		return "WIN: TIED!!!! - NOBODY WINS!\n"
+		return "WIN2: TIED!!!! - NOBODY WINS!"+setTable()+"\n"
 	}
 	if chkWinMove() {
-		return "WIN: YOU LOSE!\n"
+		return "WIN3: YOU LOSE!"+setTable()+"\n"
 	}
 	if chkLoseMove(){
 		return setTable()
@@ -87,7 +87,7 @@ func setPlay(c net.Conn, data string) string {
 	return setTable()
 }
 
-//Loops through the available positions to see is if there is any
+//Loops through the available positions to see if there is any
 //wining moves. If so then wins the game.
 func chkWinMove() bool {
 	for i, v := range pos {
